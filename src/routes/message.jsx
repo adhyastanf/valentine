@@ -148,8 +148,8 @@ function RouteComponent() {
           </DialogTrigger>
           <DialogContent className='sm:max-w-[425px]'>
             <DialogHeader>
-              <DialogTitle>Unlock</DialogTitle>
-              <DialogDescription>Enter your password to unlock.</DialogDescription>
+              <DialogTitle>Set Password</DialogTitle>
+              <DialogDescription>Enter your password.</DialogDescription>
             </DialogHeader>
             <Form {...formSetPassword}>
               <form onSubmit={formSetPassword.handleSubmit(onSubmitSetPassword)} className='space-y-4'>
