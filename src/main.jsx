@@ -12,7 +12,6 @@ const queryClient = new QueryClient();
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
-  history: 'browser',
   context: {
     queryClient, // Tambahkan ini agar bisa diakses dalam loader
   },
