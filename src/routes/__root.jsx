@@ -15,6 +15,13 @@ function RootComponent() {
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
+    // Ubah title di tab browser
+    document.title = "Happy Valentine Shiba";
+
+  }, []);
+
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
