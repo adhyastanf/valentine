@@ -5,6 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 
 export const Route = createRootRouteWithContext()({
   component: RootComponent,
+  meta:{
+    title:'Happy Valentine Shiba'
+  }
 });
 
 function RootComponent() {
