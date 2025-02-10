@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as WishListImport } from './routes/wish-list'
+import { Route as ThankYouImport } from './routes/thank-you'
 import { Route as MessageImport } from './routes/message'
 import { Route as IndexImport } from './routes/index'
 
@@ -20,6 +21,12 @@ import { Route as IndexImport } from './routes/index'
 const WishListRoute = WishListImport.update({
   id: '/wish-list',
   path: '/wish-list',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ThankYouRoute = ThankYouImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MessageImport
       parentRoute: typeof rootRoute
     }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouImport
+      parentRoute: typeof rootRoute
+    }
     '/wish-list': {
       id: '/wish-list'
       path: '/wish-list'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/message': typeof MessageRoute
+  '/thank-you': typeof ThankYouRoute
   '/wish-list': typeof WishListRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/message': typeof MessageRoute
+  '/thank-you': typeof ThankYouRoute
   '/wish-list': typeof WishListRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/message': typeof MessageRoute
+  '/thank-you': typeof ThankYouRoute
   '/wish-list': typeof WishListRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/message' | '/wish-list'
+  fullPaths: '/' | '/message' | '/thank-you' | '/wish-list'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/message' | '/wish-list'
-  id: '__root__' | '/' | '/message' | '/wish-list'
+  to: '/' | '/message' | '/thank-you' | '/wish-list'
+  id: '__root__' | '/' | '/message' | '/thank-you' | '/wish-list'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MessageRoute: typeof MessageRoute
+  ThankYouRoute: typeof ThankYouRoute
   WishListRoute: typeof WishListRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MessageRoute: MessageRoute,
+  ThankYouRoute: ThankYouRoute,
   WishListRoute: WishListRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/message",
+        "/thank-you",
         "/wish-list"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/message": {
       "filePath": "message.jsx"
+    },
+    "/thank-you": {
+      "filePath": "thank-you.jsx"
     },
     "/wish-list": {
       "filePath": "wish-list.jsx"

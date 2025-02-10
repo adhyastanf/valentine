@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Outlet, createRootRoute } from '@tanstack/react-router';
+import { Outlet, createRootRoute, createRootRouteWithContext } from '@tanstack/react-router';
 import music from '@/assets/sanctuary.mp3';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext()({
   component: RootComponent,
 });
 
 function RootComponent() {
   const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -36,11 +37,34 @@ function RootComponent() {
     };
   }, []);
 
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <React.Fragment>
       <div>
         <Outlet />
       </div>
+      <button
+        onClick={toggleMute}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          padding: '10px 15px',
+          backgroundColor: '#333',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+        }}
+      >
+        {isMuted ? 'Unmute' : 'Mute'}
+      </button>
       <audio ref={audioRef} autoPlay loop>
         <source src={music} type='audio/mp3' />
       </audio>

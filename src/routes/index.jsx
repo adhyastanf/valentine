@@ -31,19 +31,18 @@ function RouteComponent() {
     if (yesClickCount < 10) {
       setYesClickCount(yesClickCount + 1);
     } else {
-      navigate({ to: '/wish-list' });
-      console.log('wish-list');
+      navigate({ to: '/thank-you' });
     }
   };
 
   const handleNoClick = () => {
-    const randomX = (Math.random() - 0.5) * 600;
-    const randomY = Math.random() * 180 - 100;
+    const randomX = (Math.random() - 0.5) * 300;
+    const randomY = Math.random() * 200 - 100;
     setNoPosition({ x: randomX, y: randomY });
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className='min-h-screen bg-black flex flex-col relative'>
       <Carousel className='w-full'>
         <CarouselContent className='m-0 p-0'>
           {ListCarousel.map((img, index) => (
@@ -51,7 +50,7 @@ function RouteComponent() {
               <Card className='m-0 p-0 border-0'>
                 <CardContent className='flex aspect-video items-center justify-center p-0 w-full relative'>
                   <img src={img} className={clsx('w-full h-full object-cover block;', index === 4 || index === 7 ? '' : 'object-top')} />
-                  <div className='absolute inset-0 bg-gradient-to-b from-[#FFF]/0 via-[#FFF]/10 to-[#ff2644] opacity-100'></div>
+                  <div className='absolute inset-0 bg-gradient-to-b from-[#FFF]/0 via-[#FFF]/10 to-[#ff546a] opacity-100'></div>
                 </CardContent>
               </Card>
             </CarouselItem>
@@ -61,17 +60,17 @@ function RouteComponent() {
         <CarouselNext className='right-[20px]' />
       </Carousel>
 
-      <div className='bg-[#ff2644] text-center py-12 flex-1 flex flex-col items-center justify-center'>
+      <div className='bg-[#ff546a] text-center py-12 flex-1 flex flex-col items-center justify-center'>
         <h1 className='text-5xl font-bold text-white font-sacramento'>💌 "Will you be my Valentine this year?"</h1>
         <div className='my-[100px] flex justify-center items-center gap-2 relative '>
           <motion.div style={{ scale: 1 + yesClickCount * 0.5 }} className='relative'>
-            <Button variant='default' onClick={handleYesClick}>
+            <Button className='bg-[#ff0022] hover:bg-[#ffffff] hover:text-[#ff546a]' onClick={handleYesClick}>
               Yes!!!
             </Button>
           </motion.div>
 
           <motion.div className='relative' initial={{ x: 0, y: 0 }} animate={{ x: noPosition.x, y: noPosition.y }} transition={{ type: 'spring', stiffness: 100 }}>
-            <Button variant='destructive' onClick={handleNoClick}>
+            <Button className='bg-[#000000] hover:bg-[#ffffff] hover:text-[#000000]' onClick={handleNoClick}>
               No!!!
             </Button>
           </motion.div>

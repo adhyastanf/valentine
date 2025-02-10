@@ -42,7 +42,6 @@ function RouteComponent() {
   }
 
   function onSubmitDialog(values) {
-    console.log(values);
     formDialog.reset({ password: '' });
   }
 
@@ -123,7 +122,7 @@ function CardWishList({ message }) {
       <CardHeader>
         <CardTitle>Message</CardTitle>
       </CardHeader>
-      <CardContent className='font-sacramento'>
+      <CardContent className='font-comfortaa text-xs'>
         <p>{message}</p>
       </CardContent>
     </Card>

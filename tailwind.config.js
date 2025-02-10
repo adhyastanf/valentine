@@ -6,6 +6,7 @@ export default {
   	extend: {
 		fontFamily: {
 			"sacramento": "Sacramento",
+			"comfortaa": "Comfortaa",
 		},
   		borderRadius: {
   			lg: 'var(--radius)',
