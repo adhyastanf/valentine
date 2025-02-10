@@ -43,7 +43,7 @@ function RouteComponent() {
   };
 
   return (
-    <div className=''>
+    <div className="min-h-screen bg-black flex flex-col">
       <Carousel className='w-full'>
         <CarouselContent className='m-0 p-0'>
           {ListCarousel.map((img, index) => (
@@ -61,9 +61,9 @@ function RouteComponent() {
         <CarouselNext className='right-[20px]' />
       </Carousel>
 
-      <div className='bg-[#ff2644] text-center pt-12'>
+      <div className='bg-[#ff2644] text-center py-12 flex-1 flex flex-col items-center justify-center'>
         <h1 className='text-5xl font-bold text-white font-sacramento'>💌 "Will you be my Valentine this year?"</h1>
-        <div className='h-[200px] flex justify-center items-center gap-2 relative '>
+        <div className='my-[100px] flex justify-center items-center gap-2 relative '>
           <motion.div style={{ scale: 1 + yesClickCount * 0.5 }} className='relative'>
             <Button variant='default' onClick={handleYesClick}>
               Yes!!!

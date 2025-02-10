@@ -38,7 +38,9 @@ function RootComponent() {
 
   return (
     <React.Fragment>
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
       <audio ref={audioRef} autoPlay loop>
         <source src={music} type='audio/mp3' />
       </audio>
