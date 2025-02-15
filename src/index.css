@@ -243,7 +243,9 @@ button:focus-visible {
 
     --chart-5: 340 75% 55%}
 }
-
+.text-justify {
+  text-align: justify;
+}
 
 @layer base {
   * {
